@@ -8,9 +8,19 @@ public class Main {
         Scanner sc=new Scanner(System.in);
         System.out.print("$ ");
         String s=sc.next();
+        String []p=s.split("\\s+");
         if(s.equals("exit"))
             break;
-        System.out.println(s+": command not found");
+        
+        else if (p[0].equals("echo")) {
+               for (int i = 1; i < p.length; i++) {
+                    System.out.print(p[i] + " ");
+                  }
+                 System.out.println(); 
+            }
+
+        else
+            System.out.println(s+": command not found");
         }
 
     }
