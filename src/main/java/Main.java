@@ -23,8 +23,7 @@ public class Main {
                 System.out.println(s.substring(5)+" is a shell builtin");
         }
         else{
-           for (int k=5;k<p.length;k++)
-            System.out.print(p[k]+": command not found");
+           System.out.println("%s:not found",s.substring(5));
         }
         }
 
