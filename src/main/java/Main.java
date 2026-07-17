@@ -19,7 +19,7 @@ public class Main {
                  System.out.println(); 
             }
         else if (s.startsWith("type")) {
-            if(s.substring(5).equals("echo") || s.substring(5).equals("exit"))
+            if(s.substring(5).equals("echo") || s.substring(5).equals("exit")|| s.substring(5).equals("type"))
                 System.out.println(s.substring(5)+" is a shell builtin");
         }
         else
