@@ -7,8 +7,8 @@ public class Main {
         while(n>0){
         Scanner sc=new Scanner(System.in);
         System.out.print("$ ");
-        String s=sc.next();
-        String []p=s.split("\\s+");
+        String s=sc.nextLine();
+        String[] p=s.split("\\s+");
         if(s.equals("exit"))
             break;
         
