@@ -5,7 +5,7 @@ public class Main {
         // TODO: Uncomment the code below to pass the first stage
         Scanner sc=new Scanner(System.in);
         System.out.print("$ ");
-        String s=sc.nextLine;
+        String s=sc.next();
         System.out.println("command not found");
     }
 }
