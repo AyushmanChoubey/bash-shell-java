@@ -26,7 +26,6 @@ public class Main {
            for (int k=5;k<p.length;k++)
             System.out.print(p[k]+": command not found");
         }
-        System.out.println();
         }
 
     }
