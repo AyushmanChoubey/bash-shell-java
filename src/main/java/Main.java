@@ -8,22 +8,24 @@ public class Main {
         while(n>0){
         System.out.print("$ ");
         String s=sc.nextLine();
-        String []p=s.split("");
-        if(s.startsWith("exit"))
+         if(s.startsWith("exit"))
             break;
         
         else if (s.startsWith("echo")) {
-               for (int i = 1; i <p.length ; i++) {
-                    System.out.print(p[i] + " ");
-                  }
-                 System.out.println(); 
+            String [] p=s.split(" ");
+            for (int i = 1; i < p.length; i++) {
+                       System.out.print(p[i] + " ");
+                      }
+                     System.out.println();
+
             }
         else if (s.startsWith("type")) {
-            if(s.substring(5).equals("echo") || s.substring(5).equals("exit")|| s.substring(5).equals("type"))
-                System.out.println(s.substring(5)+" is a shell builtin");
+            String b=s.substring(5);
+            if(b.equals("echo") || b.equals("exit")|| b.equals("type"))
+                System.out.println(b+" is a shell builtin");
         
              else{
-           System.out.println(s.substring(5)+": not found");
+           System.out.println(b+": not found");
              }
            }
       }
