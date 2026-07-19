@@ -28,6 +28,8 @@ public class Main {
            System.out.println(b+": not found");
              }
            }
+        else 
+            System.out.println(s+"command not found");
       }
 
     }
