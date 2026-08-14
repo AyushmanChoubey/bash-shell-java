@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -21,17 +22,39 @@ public class Main {
             }
         else if (s.startsWith("type")) {
             String b=s.substring(5);
-            if(b.equals("echo") || b.equals("exit")|| b.equals("type"))
-                System.out.println(b+" is a shell builtin");
-        
-             else{
-           System.out.println(b+": not found");
+             System.out.println(type(b));
              }
-           }
+           
+    
         else 
             System.out.println(s+": command not found");
+
       }
 
     }
+          public  static  String type(String e)
+           {
+                 String[] c={"echo","exit","echo","type"};
+                 String path = System.getenv("PATH");
+                 String[] dirs=path.split(File.pathSeparator);
+                 for(int i=0;i<c.length;i++)
+                 {
+                    if(c[i].equals(e))
+                   {
+                       return e + " is a shell builtin";
+                   }
+                }
+                for(String dir:dirs)
+                {
+                    File file =new File(dir,e);
+                    if(file.exists()&& file.canExecute())
+                    {
+                        return e +" is at "+file.getAbsolutePath();
+     
+                    }
+                }
+                return e + ": not found";
+                
+           }
 }
 
