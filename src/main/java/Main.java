@@ -1,12 +1,14 @@
 import java.io.File;
 import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) throws Exception {
+public class Main 
+{
+    public static void main(String[] args) throws Exception 
+    {
         // TODO: Uncomment the code below to pass the first stage
         Scanner sc=new Scanner(System.in);
         int n=1;
-        while(n>0){
+        while(n>0)
+        {
         System.out.print("$ ");
         String s=sc.nextLine();
          if(s.startsWith("exit"))
@@ -24,7 +26,11 @@ public class Main {
             String b=s.substring(5);
              System.out.println(type(b));
              }
-           
+        else if(s.startsWith("custom_exe")) 
+            {String h=s.substring(10);
+               boolean j=check_executable(h);
+               execute(j,h);
+            }  
     
         else 
             System.out.println(s+": command not found");
@@ -43,7 +49,8 @@ public class Main {
                    {
                        return e + " is a shell builtin";
                    }
-                }
+                    }   
+            
                 for(String dir:dirs)
                 {
                     File file =new File(dir,e);
@@ -54,7 +61,36 @@ public class Main {
                     }
                 }
                 return e + ": not found";
+            }
                 
-           }
-}
+            public static  boolean check_executable(String ce)
+           {  
+              String path = System.getenv("PATH");
+                 String[] dirs=path.split(File.pathSeparator);
+                 for(String dir:dirs)
+                {
+                    File file =new File(dir,ce);
+                    if(file.exists()&& file.canExecute())
+                    {
+                        return true;
+                     }
+                 }
+                 return false;
+            }
+        
+           public static void execute(boolean d,String ec) throws Exception
+           {
+            if(d)
+            {
+                String[] parts=ec.split("\\s+");
+                ProcessBuilder pb=new ProcessBuilder(parts);
+                pb.inheritIO();
+                Process process=pb.start();
+                process.waitFor();
+            }
+                   
+               }
+        
+           
+ }
 
