@@ -27,10 +27,10 @@ public class Main
              System.out.println(type(b));
              }
         else if(s.startsWith("custom_exe")) 
-            {String h=s.substring(10);
-               boolean j=check_executable(h);
-               execute(j,h);
-            }  
+            {String []h=s.split("\\s+");
+               boolean j=check_executable(h[0]);
+               execute(j,s);
+            } 
     
         else 
             System.out.println(s+": command not found");
