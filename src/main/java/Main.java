@@ -31,11 +31,18 @@ public class Main
                boolean j=check_executable(h[0]);
                execute(j,s);
             } 
+<<<<<<< HEAD
              else if(s.equals("pwd"))
         {
             System.out.println(print_current_path());
         }
     
+=======
+        else if(s.equals("pwd"))
+        {
+            System.out.println(print_current_path());
+        }
+>>>>>>> main
         else 
             System.out.println(s+": command not found");
 
@@ -46,7 +53,7 @@ public class Main
            {
                  String[] c={"echo","exit","echo","type","pwd"};
                  String path = System.getenv("PATH");
-                 String[] dirs=path.split(File.pathSeparator);
+                  String[] dirs = path.split(java.io.File.pathSeparator);
                  for(int i=0;i<c.length;i++)
                  {
                     if(c[i].equals(e))
@@ -94,9 +101,23 @@ public class Main
             }
                    
                }
+<<<<<<< HEAD
         private static String print_current_path()
         {
                 return System.getProperty("user.dir");
+=======
+         private static String print_current_path()
+        {
+             String path=System.getenv("PATH");
+              String[] dirs = path.split(java.io.File.pathSeparator);
+              int i=0;
+              for(String dir:dirs){
+                  String withoutDrive = dir.replaceFirst("^[A-Za-z]:", "");
+                  return withoutDrive;
+                }
+                return"";
+              
+>>>>>>> main
         }
            
  }
