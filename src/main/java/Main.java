@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args) throws Exception 
     {
-        // TODO: Uncomment the code below to pass the first stage
+    
         Scanner sc=new Scanner(System.in);
         int n=1;
         while(n>0)
@@ -31,6 +31,10 @@ public class Main
                boolean j=check_executable(h[0]);
                execute(j,s);
             } 
+             else if(s.equals("pwd"))
+        {
+            System.out.println(print_current_path());
+        }
     
         else 
             System.out.println(s+": command not found");
@@ -40,7 +44,7 @@ public class Main
     }
           public  static  String type(String e)
            {
-                 String[] c={"echo","exit","echo","type"};
+                 String[] c={"echo","exit","echo","type","pwd"};
                  String path = System.getenv("PATH");
                  String[] dirs=path.split(File.pathSeparator);
                  for(int i=0;i<c.length;i++)
@@ -90,7 +94,10 @@ public class Main
             }
                    
                }
-        
+        private static String print_current_path()
+        {
+                return System.getProperty("user.dir");
+        }
            
  }
 
