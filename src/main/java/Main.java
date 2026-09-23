@@ -37,13 +37,19 @@ public class Main
         }
         else if(s.startsWith("cd"))
         {
-            String []h=s.split("\\s+");
-            boolean flag=changedirectory(h[0]);
-            if(flag)
-                continue;
-            else{
-                System.out.println("cd :"+h[1]+" No such file or directory");
-            }
+        
+                 String[] h = s.split("\\s+");
+
+            if (h.length > 1) {
+             String target = h[1];
+              File dir = new File(target);
+              System.setProperty("user.dir", dir.getAbsolutePath());
+            //boolean flag=changedirectory(h[0]);
+            //if(flag)
+              //  continue;
+            //else{
+             //   System.out.println("cd :"+h[1]+" No such file or directory");
+           // }
         }
 
         else 
@@ -109,17 +115,17 @@ public class Main
                 return System.getProperty("user.dir");
 
         }
-     public static boolean changedirectory(String cf) throws Exception{
-        File dir = new File(cf);
+     //public static boolean changedirectory(String cf) throws Exception{
+       // File dir = new File(cf);
 
         // Check if path exists and is a directory
-        if (dir.exists() && dir.isDirectory()) {
-            System.setProperty("user.dir", dir.getAbsolutePath());
-            return true;
-        } else {
-            return false;
-        }
-    }
+       // if (dir.exists() && dir.isDirectory()) {
+            //System.setProperty("user.dir", dir.getAbsolutePath());
+           // return true;
+       // } else {
+          //  return false;
+      //  }
+   // }
    
 
  }
