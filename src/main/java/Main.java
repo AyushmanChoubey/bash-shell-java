@@ -58,6 +58,7 @@ public class Main
              //   System.out.println("cd :"+h[1]+" No such file or directory");
             }
 
+            }
         }
 
         else 
@@ -65,8 +66,8 @@ public class Main
 
         
 
-         }
-        }
+         
+    } 
     }
           public  static  String type(String e)
            {
