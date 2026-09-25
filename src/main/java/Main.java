@@ -41,22 +41,32 @@ public class Main
                  String[] h = s.split("\\s+");
 
             if (h.length > 1) {
+            
              String target = h[1];
               File dir = new File(target);
-              System.setProperty("user.dir", dir.getAbsolutePath());
+              if (dir.isAbsolute()) {
+            if (dir.isAbsolute() && dir.isDirectory()) {
+                System.setProperty("user.dir", dir.getAbsolutePath());
+            } else {
+                System.out.println("cd: " + target + ": No such file or directory");
+            }
+             // System.setProperty("user.dir", dir.getAbsolutePath());
             //boolean flag=changedirectory(h[0]);
             //if(flag)
               //  continue;
             //else{
              //   System.out.println("cd :"+h[1]+" No such file or directory");
-           // }
+            }
+
         }
 
         else 
             System.out.println(s+": command not found");
 
-      }
+        
 
+         }
+        }
     }
           public  static  String type(String e)
            {
@@ -116,11 +126,11 @@ public class Main
 
         }
      //public static boolean changedirectory(String cf) throws Exception{
-       // File dir = new File(cf);
+        //File dir = new File(cf);
 
         // Check if path exists and is a directory
        // if (dir.exists() && dir.isDirectory()) {
-            //System.setProperty("user.dir", dir.getAbsolutePath());
+           // System.setProperty("user.dir", dir.getAbsolutePath());
            // return true;
        // } else {
           //  return false;
