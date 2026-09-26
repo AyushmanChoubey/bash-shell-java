@@ -133,7 +133,7 @@ public class Main
             Path homePath = Paths.get(home);
             if (Files.exists(homePath) && Files.isDirectory(homePath)) {
                 System.setProperty("user.dir", homePath.toAbsolutePath().toString());
-                return homePath.toAbsolutePath().toString();
+                System.out.println( homePath.toAbsolutePath().toString());
             }
         }
     }
