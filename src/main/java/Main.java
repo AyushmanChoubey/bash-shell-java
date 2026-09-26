@@ -122,12 +122,8 @@ public class Main
         if (Files.exists(newPath) && Files.isDirectory(newPath)) {
             System.setProperty("user.dir", newPath.toAbsolutePath().toString());
             
-        } else {
-            System.out.println("cd: " + target + ": No such file or directory");
-            
-        }
-    }
-       else if(s[1].equals("~")){
+        } 
+         if(s[1].equals("~")){
         String home = System.getenv("HOME");
         if (home != null) {
             Path homePath = Paths.get(home);
@@ -137,6 +133,13 @@ public class Main
             }
         }
     }
+        else {
+            System.out.println("cd: " + target + ": No such file or directory");
+            
+        }
+    }
+      
+    
      
         return "";
 
