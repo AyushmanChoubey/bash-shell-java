@@ -54,7 +54,7 @@ public class Main
             else{
                  File current = new File(System.getProperty("user.dir"));
                   dir = new File(current, target);
-
+                  System.setProperty("use.dir", dir.getAbsolutePath());
             }
         }
     }
