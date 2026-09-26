@@ -127,6 +127,16 @@ public class Main
             
         }
     }
+    else{
+        String home = System.getenv("HOME");
+        if (home != null) {
+            Path homePath = Paths.get(home);
+            if (Files.exists(homePath) && Files.isDirectory(homePath)) {
+                System.setProperty("user.dir", homePath.toAbsolutePath().toString());
+                return homePath.toAbsolutePath().toString();
+            }
+        }
+    }
      
         return "";
 
