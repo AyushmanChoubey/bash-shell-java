@@ -111,6 +111,9 @@ public class Main
         public static String setcdproperty(String[] s) {
           if  (s.length > 1) {
         String target = s[1];
+         if (target.equals("~")) {
+            target = System.getenv("HOME");
+        }
         Path newPath;
         Path candidate = Paths.get(target);
         if (candidate.isAbsolute()) {
@@ -122,10 +125,7 @@ public class Main
         if (Files.exists(newPath) && Files.isDirectory(newPath)) {
             System.setProperty("user.dir", newPath.toAbsolutePath().toString());
             
-        } 
-        if(s[1] .equals("~"))
-          {  home();}
-        
+        }       
         else {
             System.out.println("cd: " + target + ": No such file or directory");
             
@@ -133,18 +133,7 @@ public class Main
     }
        return "";
     } 
-    public static String home()
-    {
-         String home = System.getenv("HOME");
-        if (home != null) {
-            Path homePath = Paths.get(home);
-            if (Files.exists(homePath) && Files.isDirectory(homePath)) {
-                System.setProperty("user.dir", homePath.toAbsolutePath().toString());
-                System.out.println( homePath.toAbsolutePath().toString());
-            }
-        }
-        return "";
-      }
+
     
   
 }
