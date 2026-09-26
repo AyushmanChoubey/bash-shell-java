@@ -44,22 +44,20 @@ public class Main
             
              String target = h[1];
               File dir = new File(target);
-              if (dir.isAbsolute()) {
+             if (dir.isAbsolute()) {
             if (dir.isAbsolute() && dir.isDirectory()) {
                 System.setProperty("user.dir", dir.getAbsolutePath());
             } else {
                 System.out.println("cd: " + target + ": No such file or directory");
             }
-             // System.setProperty("user.dir", dir.getAbsolutePath());
-            //boolean flag=changedirectory(h[0]);
-            //if(flag)
-              //  continue;
-            //else{
-             //   System.out.println("cd :"+h[1]+" No such file or directory");
             }
+            else{
+                 File current = new File(System.getProperty("user.dir"));
+                  dir = new File(current, target);
 
             }
         }
+    }
 
         else 
             System.out.println(s+": command not found");
