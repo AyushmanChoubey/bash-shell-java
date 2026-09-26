@@ -40,32 +40,8 @@ public class Main
         {
         
                  String[] h = s.split("\\s+");
-
-            if (h.length > 1) {
-            
-             String target = h[1];
-              File dir = new File(target);
-             if (dir.isAbsolute()) {
-            if (dir.isAbsolute() && dir.isDirectory()) {
-                System.setProperty("user.dir", dir.getAbsolutePath());
-            } else {
-                System.out.println("cd: " + target + ": No such file or directory");
-            }
-          }
-        }
-        else {
-                      String sub1 = h[1];
-                        Path sub = Paths.get(print_current_path()).resolve(sub1).normalize();
-
-                     if (Files.exists(sub) && Files.isDirectory(sub)) {
-                         System.setProperty("user.dir", sub.toAbsolutePath().toString());
-                    } else {
-                        System.out.println("cd: " + sub1 + ": No such file or directory");
-                        }
-                   }
-
-
-       }
+                 setcdproperty(h);
+                }
 
         else 
             System.out.println(s+": command not found");
@@ -132,18 +108,27 @@ public class Main
                 return System.getProperty("user.dir");
 
         }
-     //public static boolean changedirectory(String cf) throws Exception{
-        //File dir = new File(cf);
+        public static String setcdproperty(String[] s) {
+          if  (s.length > 1) {
+        String target = s[1];
+        Path newPath;
+        Path candidate = Paths.get(target);
+        if (candidate.isAbsolute()) {
+            newPath = candidate;
+        } else {
+            Path current = Paths.get(System.getProperty("user.dir"));
+            newPath = current.resolve(target).normalize();
+        }
+        if (Files.exists(newPath) && Files.isDirectory(newPath)) {
+            System.setProperty("user.dir", newPath.toAbsolutePath().toString());
+            
+        } else {
+            System.out.println("cd: " + target + ": No such file or directory");
+            
+        }
+    }
+     
+        return "";
 
-        // Check if path exists and is a directory
-       // if (dir.exists() && dir.isDirectory()) {
-           // System.setProperty("user.dir", dir.getAbsolutePath());
-           // return true;
-       // } else {
-          //  return false;
-      //  }
-   // }
-   
-
- }
-
+} 
+}
