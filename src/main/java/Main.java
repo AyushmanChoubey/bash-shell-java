@@ -1,4 +1,5 @@
 import java.io.File;
+import java.nio.file.*;
 import java.util.Scanner;
 public class Main 
 {
@@ -50,14 +51,21 @@ public class Main
             } else {
                 System.out.println("cd: " + target + ": No such file or directory");
             }
-            }
-            else{
-                 File current = new File(System.getProperty("user.dir"));
-                  dir = new File(current, target);
-                  System.setProperty("use.dir", dir.getAbsolutePath());
-            }
+          }
         }
-    }
+        else {
+                      String sub1 = h[1];
+                        Path sub = Paths.get(print_current_path()).resolve(sub1).normalize();
+
+                     if (Files.exists(sub) && Files.isDirectory(sub)) {
+                         System.setProperty("user.dir", sub.toAbsolutePath().toString());
+                    } else {
+                        System.out.println("cd: " + sub1 + ": No such file or directory");
+                        }
+                   }
+
+
+       }
 
         else 
             System.out.println(s+": command not found");
