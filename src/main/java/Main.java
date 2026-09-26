@@ -127,7 +127,7 @@ public class Main
             
         }
     }
-    else{
+       else if(s[1].equals("~")){
         String home = System.getenv("HOME");
         if (home != null) {
             Path homePath = Paths.get(home);
